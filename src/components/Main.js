@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
 import api from "../utils/api";
 import Card from "./Card";
@@ -9,8 +8,8 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 	const [userAvatar, setUserAvatar] = useState("");
 	const [cards, setCards] = useState([]);
 
-	//совершаем запрос в API за пользовательскими данными и карточками
-   //после получения ответа задаем полученные данные в соответствующие переменные состояния
+//совершаем запрос в API за пользовательскими данными и карточками
+//после получения ответа задаем полученные данные в соответствующие переменные состояния
    useEffect(() => {
       Promise.all([api.getInitialCards(), api.getUserInfo()])
          .then(([serverCards, userData]) => {
@@ -33,10 +32,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 					className="profile__change-button" 
 					type="button"
 					aria-label="Редактировать аватар профиля">
-					<img
-						src={`${userAvatar}`}
-						className="profile__avatar"
-						/>
+					<img src={`${userAvatar}`} alt="Фотография профиля." className="profile__avatar"/>
 				</button>
 				<div className="profile__info">
 						<div className="profile__name">
@@ -67,7 +63,8 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 					<Card
 						card={card}
 						key={card._id}
-						onCardClick={onCardClick} />
+						onCardClick={onCardClick}
+					/>
 				);
 			})}
 		</section>
