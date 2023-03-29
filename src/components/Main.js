@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
 import api from "../utils/api";
 import Card from "./Card";
@@ -32,10 +33,10 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 					className="profile__change-button" 
 					type="button"
 					aria-label="Редактировать аватар профиля">
-					<div
-						style={{ backgroundImage: `url(${userAvatar})` }} 
-						className="profile__avatar">
-					</div>
+					<img
+						src={`${userAvatar}`}
+						className="profile__avatar"
+						/>
 				</button>
 				<div className="profile__info">
 						<div className="profile__name">
