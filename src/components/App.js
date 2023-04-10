@@ -51,21 +51,25 @@ function App() {
     
     // Отправляем запрос в API(передаем айди нужной крточки и фалс-значение проверки нашего лайка)
     // Получаем обновлённые данные карточки
-    // Далее обновляем стейт карточек, проверку в скобках не совсем поняла
+    // Далее обновляем стейт карточек
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-    });
+      })
+      .catch((err) => console.log(err))
   }
 
   // Функция удаления карточки
   const handleCardDelete = (card) => {
     // Отправляем запрос в API(передаем айди карточки)
     // Оновляем стейт(метод фильтр создает копию массива и исключает из него карточку)
-    api.deleteCard(card._id).then(() => {
-      setCards((state) => state.filter((i) => i._id !== card._id))
-    })
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        setCards((state) => state.filter((i) => i._id !== card._id));
+      })
+      .catch((err) => console.log(err))
   }
 
   // Функция-обработчик, в которой мы

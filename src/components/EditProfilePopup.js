@@ -32,11 +32,12 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 
   // После загрузки текущего пользователя из API
   // Его данные будут использованы в управляемых компонентах
-  // Стейт-переменные будут обновляться при изменении контекста (второй аргумент)
+  // Стейт-переменные будут обновляться при изменении контекста
+  // И при открытом состоянии попапа (второй аргумент)
   useEffect(() => {
   setName(currentUser.name);
   setDescription(currentUser.about);
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   return (
     <PopupWithForm

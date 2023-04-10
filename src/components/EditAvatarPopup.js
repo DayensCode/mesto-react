@@ -5,6 +5,15 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   // Используем референс
   const avatar = useRef();
 
+  // Значение поля рефа пустая строка
+  // Элемент будет обновляться  при изменении изОпен (второй аргумент)
+  // Реализация очищения инпута при открытии формы
+  useEffect(() => {
+    if (isOpen) {
+      avatar.current.value = '';
+    }
+  }, [isOpen])
+
   // Обработчик сабмита в котором мы
   function handleSubmit (evt) {
     // Запрещаем браузеру переходить по адресу формы

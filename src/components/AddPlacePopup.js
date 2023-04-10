@@ -3,11 +3,12 @@ import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   // Используем управляемые компоненты
-  const [name, setName] = useState();
-  const [link, setLink] = useState();
+  const [name, setName] = useState("");
+  const [link, setLink] = useState("");
 
   // В управляемых компонентах будут исползованы пустые строки
   // Стейт-переменные будут обновляться при изменении изОпен (второй аргумент)
+  // Реализация очищения инпутов при открытии формы
   useEffect(() => {
     if (isOpen) {
       setName('')
@@ -29,10 +30,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
     evt.preventDefault();
 
     // В аргумент внешней функции обработчика передаем управляемые стейт-переменные
-    onAddPlace({
-      name: name,
-      link: link,
-    });
+    onAddPlace({ name, link });
   }
 
   return (
