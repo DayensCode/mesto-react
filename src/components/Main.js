@@ -7,10 +7,10 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike
     return <Card card={card} key={card._id} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelete}/>;
   });
 
-  //подписали компонент на контекст и вынесли его в переменную
+  // Подписали компонент на контекст и вынесли его в переменную
   const currentUser = useContext(CurrentUserContext);
 
-  //используем полученные поля объекта пользователя
+  // Используем полученные поля объекта пользователя
   return (
     <main className="content">
       <section className="profile" aria-label="Профиль">

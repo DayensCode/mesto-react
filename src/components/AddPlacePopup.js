@@ -15,6 +15,14 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
     }
   }, [isOpen])
 
+  // Обработчики изменений в инпутах, обновляющие стейт
+  function handleChangeName (evt) {
+    setName(evt.target.value);
+  }
+  function handleChangeLink (evt) {
+    setLink(evt.target.value);
+  }
+
   // Обработчик сабмита в котором мы
   function handleSubmit (evt) {
     // Запрещаем браузеру переходить по адресу формы
@@ -46,6 +54,8 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         required
         minLength={2}
         maxLength={30}
+        value={name || ''}
+        onChange={handleChangeName}
       />
       <span id="name-card-error" className="popup__error popup__error_visible"></span>
       <input
@@ -55,6 +65,8 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         name="link"
         placeholder="Ссылка на картинку"
         required
+        value={link || ''}
+        onChange={handleChangeLink}
       />
       <span id="link-error" className="popup__error popup__error_visible"></span>
     </PopupWithForm>
