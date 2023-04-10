@@ -1,31 +1,16 @@
-import React, { useEffect, useState } from "react";
-import api from "../utils/api";
+import { useContext } from "react";
 import Card from "./Card";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
-  const [userName, setUserName] = useState("");
-  const [userDescription, setUserDescription] = useState("");
-  const [userAvatar, setUserAvatar] = useState("");
-  const [cards, setCards] = useState([]);
+function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete, cards }) {
   const cardsElements = cards.map((card) => {
-    return <Card card={card} key={card._id} onCardClick={onCardClick} />;
+    return <Card card={card} key={card._id} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelete}/>;
   });
 
-  //совершаем запрос в API за пользовательскими данными и карточками
-  //после получения ответа задаем полученные данные в соответствующие переменные состояния
-  useEffect(() => {
-    Promise.all([api.getInitialCards(), api.getUserInfo()])
-      .then(([serverCards, userData]) => {
-        setUserName(userData.name);
-        setUserDescription(userData.about);
-        setUserAvatar(userData.avatar);
-        setCards(serverCards);
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err.status}`);
-      });
-  }, []);
+  //подписали компонент на контекст и вынесли его в переменную
+  const currentUser = useContext(CurrentUserContext);
 
+  //используем полученные поля объекта пользователя
   return (
     <main className="content">
       <section className="profile" aria-label="Профиль">
@@ -36,11 +21,11 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
             type="button"
             aria-label="Редактировать аватар профиля"
           >
-            <img src={`${userAvatar}`} alt="Фотография профиля." className="profile__avatar" />
+            <img src={`${currentUser.avatar}`} alt="Фотография профиля." className="profile__avatar" />
           </button>
           <div className="profile__info">
             <div className="profile__name">
-              <h1 className="profile__title">{userName}</h1>
+              <h1 className="profile__title">{currentUser.name}</h1>
               <button
                 onClick={onEditProfile}
                 className="profile__edit-button"
@@ -48,7 +33,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
                 aria-label="Редактировать информацию профиля"
               ></button>
             </div>
-            <p className="profile__subtitle">{userDescription}</p>
+            <p className="profile__subtitle">{currentUser.about}</p>
           </div>
         </div>
         <button

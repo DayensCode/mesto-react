@@ -19,7 +19,7 @@ class Api {
       headers: this._headers,
     }).then(this._checkResponse);
   }
-  updateUserInfo(name, about) {
+  updateUserInfo({name, about}) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
@@ -29,7 +29,7 @@ class Api {
       }),
     }).then(this._checkResponse);
   }
-  updateAvatar(avatar) {
+  updateAvatar({avatar}) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
@@ -38,13 +38,13 @@ class Api {
       }),
     }).then(this._checkResponse);
   }
-  addCard(values) {
+  addCard({name, link}) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: values.name,
-        link: values.link,
+        name: name,
+        link: link,
       }),
     }).then(this._checkResponse);
   }
@@ -66,6 +66,23 @@ class Api {
       headers: this._headers,
     }).then(this._checkResponse);
   }
+
+  changeLikeCardStatus (id, isLiked) {
+    if (isLiked) {
+      return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+        headers: this._headers,
+        method: "PUT",
+      })
+        .then((res) => this._checkResponse(res))
+    } else {
+      return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+        headers: this._headers,
+        method: "DELETE",
+      })
+        .then((res) => this._checkResponse(res))
+    }
+  }
+
 }
 
 const api = new Api({

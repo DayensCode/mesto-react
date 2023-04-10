@@ -1,11 +1,37 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function AddPlacePopup({ isOpen, onClose }) {
+function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
+  // Используем управляемые компоненты
+  const [name, setName] = useState();
+  const [link, setLink] = useState();
+
+  // В управляемых компонентах будут исползованы пустые строки
+  // Стейт-переменные будут обновляться при изменении изОпен (второй аргумент)
+  useEffect(() => {
+    if (isOpen) {
+      setName('')
+      setLink('')
+    }
+  }, [isOpen])
+
+  // Обработчик сабмита в котором мы
+  function handleSubmit (evt) {
+    // Запрещаем браузеру переходить по адресу формы
+    evt.preventDefault();
+
+    // В аргумент внешней функции обработчика передаем управляемые стейт-переменные
+    onAddPlace({
+      name: name,
+      link: link,
+    });
+  }
+
   return (
     <PopupWithForm
       isOpen={isOpen}
       onClose={onClose}
+      onSubmit={handleSubmit}
       type="add"
       title="Новое место"
       name="add-mesto"
