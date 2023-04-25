@@ -10,10 +10,10 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   // Обработчики изменений в инпутах, обновляющие стейт
   const handleChangeName = (evt) => {
     setName(evt.target.value);
-  }
+  };
   const handleChangeDescription = (evt) => {
     setDescription(evt.target.value);
-  }
+  };
 
   // Обработчик сабмита в котором мы
   const handleSubmit = (evt) => {
@@ -22,10 +22,10 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 
     // В аргумент внешней функции обработчика передаем управляемые стейт-переменные
     onUpdateUser({
-    name: name,
-    about: description,
+      name: name,
+      about: description,
     });
-  }
+  };
 
   // Подписка на контекст
   const currentUser = useContext(CurrentUserContext);
@@ -35,8 +35,8 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   // Стейт-переменные будут обновляться при изменении контекста
   // И при открытом состоянии попапа (второй аргумент)
   useEffect(() => {
-  setName(currentUser.name);
-  setDescription(currentUser.about);
+    setName(currentUser.name);
+    setDescription(currentUser.about);
   }, [currentUser, isOpen]);
 
   return (
@@ -58,7 +58,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         required
         minLength={2}
         maxLength={40}
-        value={name || ''}
+        value={name || ""}
         onChange={handleChangeName}
       />
       <span id="name-error" className="popup__error popup__error_visible"></span>
@@ -71,7 +71,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         required
         minLength={2}
         maxLength={200}
-        value={description || ''}
+        value={description || ""}
         onChange={handleChangeDescription}
       />
       <span id="info-error" className="popup__error popup__error_visible"></span>
