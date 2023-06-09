@@ -1,19 +1,25 @@
-# Учебный frontend-проект: "Место"
+# Frontend-проект: "Место на React"
 
 ## Описание проекта
 
-Данная проектная работа выполнена в рамках образовательной программы Яндекс Практикума.Проект - сервис Место: интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки. В сравнении с [предыдущей](https://github.com/DayensCode/mesto) работой это приложение создавалось на основе CRA (Create React APP).
+Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки. В сравнении с [предыдущей](https://github.com/DayensCode/mesto) работой это приложение создавалось на основе CRA (Create React APP).
+
+![image](https://user-images.githubusercontent.com/92729800/204303554-fd708625-c724-46f9-9045-261b69f63b27.png)
+
+### Ссылка на макет
+
+https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1
 
 ### Ссылка на проект
 
-(https://dayenscode.github.io/mesto-react/)
+https://dayenscode.github.io/mesto-react/
 
 ## Используемые языки
 
+[HTML](https://ru.wikipedia.org/wiki/HTML)
 [CSS](https://ru.wikipedia.org/wiki/CSS)
 [JS](https://ru.wikipedia.org/wiki/JavaScript)
-[JSX](<https://en.wikipedia.org/wiki/JSX_(JavaScript)>)
-[React JS](https://ru.wikipedia.org/wiki/React)
+[React](https://ru.wikipedia.org/wiki/React)
 
 ## Установка и запуск приложения в локальном репозитории
 
