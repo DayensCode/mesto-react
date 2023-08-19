@@ -2,9 +2,9 @@
 
 ## Описание проекта
 
-Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки. В сравнении с [предыдущей](https://github.com/DayensCode/mesto) работой это приложение создавалось на основе CRA (Create React APP).
+Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки. В сравнении с [предыдущей](https://github.com/DayensCode/mesto) работой это приложение создавалось на основе CRA (Create React App).
 
-![image](https://user-images.githubusercontent.com/92729800/204303554-fd708625-c724-46f9-9045-261b69f63b27.png)
+![image](https://github.com/DayensCode/mesto/blob/main/screen-for-readme.png)
 
 ### Ссылка на макет
 
@@ -24,7 +24,7 @@ https://dayenscode.github.io/mesto-react/
 ## Установка и запуск приложения в локальном репозитории
 
 - _git clone https://github.com/DayensCode/mesto-react.git_ - клонировать репозиторий (с использованием HTTPS) на свое устройство
-- _npm install --save react-router-dom_ - установить зависимости
+- _npm ci_ - установить и обновить зависимости
 - _npm start_ - запустить приложение в режиме разработчика
 
 ## Процесс создания
